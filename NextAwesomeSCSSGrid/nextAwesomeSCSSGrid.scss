@@ -1,0 +1,52 @@
+$align: center !default;
+$justify: center !default;
+$wrap: wrap !default;
+
+@mixin element-centerd {
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+
+[class*='col-'] {
+  border: none;
+  display: flex;
+  min-height: 1px;
+}
+
+@for $i from 1 through 10 {
+  .col-#{$i} {
+    width: ((100%/10) * $i);
+  }
+}
+
+$direction: 'row', 'column';
+
+@each $i in $direction {
+  .flex-#{nth($i, 1)} {
+    flex-direction: #{nth($i, 1)};
+    @include element-centerd;
+  }
+}
+
+$grid: 'flex-sm' 576px, 'flex-md' 768px, 'flex-lg' 992px, 'flex-xl' 1200px;
+
+@each $i in $grid {
+  @media (min-width: #{nth($i, 2)}) {
+    .#{nth($i, 1)}-column {
+      @include element-centerd;
+      flex-direction: row;
+    }
+
+    .#{nth($i, 1)}-row {
+      @include element-centerd;
+      flex-direction: row;
+    }
+
+    @for $j from 1 through 10 {
+      .col-sm-#{$j} {
+        width: ((100%/10) * $j);
+      }
+    }
+  }
+}

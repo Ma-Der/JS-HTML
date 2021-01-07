@@ -1,0 +1,31 @@
+.type > .text {
+  padding-right: 0.1rem;
+  border-right: 0.1rem solid #111;
+  -webkit-animation: flash 0.7s infinite;
+          animation: flash 0.7s infinite;
+}
+
+@-webkit-keyframes flash {
+  0% {
+    border-color: #111;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: #111;
+  }
+}
+
+@keyframes flash {
+  0% {
+    border-color: #111;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: #111;
+  }
+}
+/*# sourceMappingURL=style.css.map */

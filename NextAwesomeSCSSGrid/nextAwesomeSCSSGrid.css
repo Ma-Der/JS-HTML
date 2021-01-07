@@ -1,0 +1,322 @@
+[class*='col-'] {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 1px;
+}
+
+.col-1 {
+  width: 10%;
+}
+
+.col-2 {
+  width: 20%;
+}
+
+.col-3 {
+  width: 30%;
+}
+
+.col-4 {
+  width: 40%;
+}
+
+.col-5 {
+  width: 50%;
+}
+
+.col-6 {
+  width: 60%;
+}
+
+.col-7 {
+  width: 70%;
+}
+
+.col-8 {
+  width: 80%;
+}
+
+.col-9 {
+  width: 90%;
+}
+
+.col-10 {
+  width: 100%;
+}
+
+.flex-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .flex-sm-column {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .flex-sm-row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .col-sm-1 {
+    width: 10%;
+  }
+  .col-sm-2 {
+    width: 20%;
+  }
+  .col-sm-3 {
+    width: 30%;
+  }
+  .col-sm-4 {
+    width: 40%;
+  }
+  .col-sm-5 {
+    width: 50%;
+  }
+  .col-sm-6 {
+    width: 60%;
+  }
+  .col-sm-7 {
+    width: 70%;
+  }
+  .col-sm-8 {
+    width: 80%;
+  }
+  .col-sm-9 {
+    width: 90%;
+  }
+  .col-sm-10 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-md-column {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .flex-md-row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .col-sm-1 {
+    width: 10%;
+  }
+  .col-sm-2 {
+    width: 20%;
+  }
+  .col-sm-3 {
+    width: 30%;
+  }
+  .col-sm-4 {
+    width: 40%;
+  }
+  .col-sm-5 {
+    width: 50%;
+  }
+  .col-sm-6 {
+    width: 60%;
+  }
+  .col-sm-7 {
+    width: 70%;
+  }
+  .col-sm-8 {
+    width: 80%;
+  }
+  .col-sm-9 {
+    width: 90%;
+  }
+  .col-sm-10 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .flex-lg-column {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .flex-lg-row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .col-sm-1 {
+    width: 10%;
+  }
+  .col-sm-2 {
+    width: 20%;
+  }
+  .col-sm-3 {
+    width: 30%;
+  }
+  .col-sm-4 {
+    width: 40%;
+  }
+  .col-sm-5 {
+    width: 50%;
+  }
+  .col-sm-6 {
+    width: 60%;
+  }
+  .col-sm-7 {
+    width: 70%;
+  }
+  .col-sm-8 {
+    width: 80%;
+  }
+  .col-sm-9 {
+    width: 90%;
+  }
+  .col-sm-10 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .flex-xl-column {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .flex-xl-row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .col-sm-1 {
+    width: 10%;
+  }
+  .col-sm-2 {
+    width: 20%;
+  }
+  .col-sm-3 {
+    width: 30%;
+  }
+  .col-sm-4 {
+    width: 40%;
+  }
+  .col-sm-5 {
+    width: 50%;
+  }
+  .col-sm-6 {
+    width: 60%;
+  }
+  .col-sm-7 {
+    width: 70%;
+  }
+  .col-sm-8 {
+    width: 80%;
+  }
+  .col-sm-9 {
+    width: 90%;
+  }
+  .col-sm-10 {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=nextAwesomeSCSSGrid.css.map */

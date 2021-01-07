@@ -1,0 +1,31 @@
+.wrapper {
+  width: 500px;
+  height: 500px;
+}
+
+.with-progress-reading-bar {
+  opacity: 1;
+}
+
+.with-progress-reading-bar .progress-bar-wrapper {
+  width: 100%;
+  height: 2vh;
+  margin: 5px 0;
+  background-color: transparent;
+  border: 1px solid lightskyblue;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  overflow: none;
+}
+
+.with-progress-reading-bar .progress-bar-wrapper .progress-bar-inside {
+  max-width: 100%;
+  width: 0;
+  height: 2vh;
+  background-color: blue;
+  -webkit-box-shadow: 0 0 25px lightskyblue;
+          box-shadow: 0 0 25px lightskyblue;
+  overflow: none;
+}
+/*# sourceMappingURL=next.css.map */
