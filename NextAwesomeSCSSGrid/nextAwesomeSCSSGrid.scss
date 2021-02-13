@@ -29,22 +29,22 @@ $direction: 'row', 'column';
   }
 }
 
-$grid: 'flex-sm' 576px, 'flex-md' 768px, 'flex-lg' 992px, 'flex-xl' 1200px;
+$grid: 'flex-' '-sm-' 576px, 'flex-' '-md-' 768px, 'flex-' '-lg-' 992px,
+  'flex-' '-xl-' 1200px;
 
 @each $i in $grid {
-  @media (min-width: #{nth($i, 2)}) {
+  @media (min-width: #{nth($i, 3)}) {
     .#{nth($i, 1)}-column {
       @include element-centerd;
       flex-direction: row;
     }
-
     .#{nth($i, 1)}-row {
       @include element-centerd;
       flex-direction: row;
     }
 
     @for $j from 1 through 10 {
-      .col-sm-#{$j} {
+      .col#{nth($i, 2)}#{$j} {
         width: ((100%/10) * $j);
       }
     }

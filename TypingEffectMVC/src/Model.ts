@@ -1,26 +1,22 @@
-import { UI } from './UI';
 
-export interface ITypingEffect {
-    elementHtml: HTMLElement;
+export interface IModel {
     delayTime: number;
     elementText: string;
     text: string;
     wordsArray: string[];
     words: string[];
     index: number;
-    clearHtmlElement(): void;
-    typeWrite(): void;
-    deleteTyping(): void;
-    typeWords(): void;
-    deleteWords(): void;
-    show(text: string): void;
+    setText(text: string): void;
+    setWordsArray(text: string): void;
+    setDelay(delay?: number): void;
+    typeWrite(): string;
+    deleteTyping(): string;
+    typeWords(): string;
+    deleteWords(): string;
 }
 
-// MVC - model view controller
+export class Model {
 
-export class TypingEffect implements ITypingEffect {
-
-    elementHtml: HTMLElement;
     delayTime: number;
     elementText: string;
     text: string;
@@ -28,19 +24,27 @@ export class TypingEffect implements ITypingEffect {
     words: string[];
     index: number;
 
-    constructor(elementHtml: HTMLElement, delayTime: number) {
-        this.elementHtml = elementHtml;
-        this.delayTime = delayTime;
-        this.elementText = this.elementHtml.innerHTML;
+    constructor() {
+        this.delayTime = this.setDelay();
+        this.elementText = '';
         this.text = '';
-        this.wordsArray = this.elementText.split(' ');
+        this.wordsArray = [];
         this.words = [];
         this.index = 0;
-        this.clearHtmlElement();
     }
 
-    clearHtmlElement() {
-        this.elementHtml.textContent = null;
+    setText(text: string) {
+        this.elementText = text;
+        return text;
+    }
+
+    setWordsArray(text: string) {
+        this.wordsArray = text.split(' ');
+    }
+
+    setDelay(delay: number = 500): number {
+        this.delayTime = 60000/delay;
+        return 60000/delay;
     }
 
     typeWrite() {
@@ -50,7 +54,7 @@ export class TypingEffect implements ITypingEffect {
             } else  {
                 this.deleteTyping();
             }
-            this.show(this.text);
+            return this.text;
     }
 
     deleteTyping() {
@@ -61,7 +65,7 @@ export class TypingEffect implements ITypingEffect {
             else {
                this.typeWrite();
             }
-            this.show(this.text);
+            return this.text;
     }
 
     typeWords() {
@@ -71,8 +75,8 @@ export class TypingEffect implements ITypingEffect {
         } else {
             this.deleteWords();
         }
+        return this.words.join(' ');
 
-        this.show(this.words.join(' '));
     }
 
     deleteWords() {
@@ -83,12 +87,6 @@ export class TypingEffect implements ITypingEffect {
         else {
             this.typeWords();
         }
-
-        this.show(this.words.join(' '));
-    }
-
-    show(text: string) {
-        const userInterface = new UI(this.elementHtml);
-        userInterface.display(text);
+        return this.words.join(' ');
     }
 }
