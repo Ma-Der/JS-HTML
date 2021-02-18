@@ -15,19 +15,56 @@ var Controller = /** @class */ (function () {
     function Controller(model, view) {
         this.model = model;
         this.view = view;
-        this.isWords = false;
+        this.setupModel();
     }
-    Controller.prototype.type = function () {
+    Controller.prototype.typeForward = function () {
         var _this = this;
+        if (this.model.index < this.model.elementText.length) {
+            this.model.typeWrite();
+            setTimeout(function () { return _this.typeForward(); }, this.model.delayTime);
+        }
+        else {
+            this.typeBackward();
+        }
+        this.view.displayText(this.model.text);
+    };
+    Controller.prototype.typeBackward = function () {
+        var _this = this;
+        if (this.model.index > 0) {
+            this.model.deleteTyping();
+            setTimeout(function () { return _this.typeBackward(); }, this.model.delayTime);
+        }
+        else {
+            this.typeForward();
+        }
+        this.view.displayText(this.model.text);
+    };
+    Controller.prototype.typeWordsForward = function () {
+        var _this = this;
+        if (this.model.index < this.model.wordsArray.length) {
+            this.model.typeWords();
+            setTimeout(function () { return _this.typeWordsForward(); }, this.model.delayTime);
+        }
+        else {
+            this.typeWordsBackwards();
+        }
+        this.view.displayText(this.model.words.join(" "));
+    };
+    Controller.prototype.typeWordsBackwards = function () {
+        var _this = this;
+        if (this.model.index > 0) {
+            this.model.deleteWords();
+            setTimeout(function () { return _this.typeWordsBackwards(); }, this.model.delayTime);
+        }
+        else {
+            this.typeWordsForward();
+        }
+        this.view.displayText(this.model.words.join(" "));
+    };
+    Controller.prototype.setupModel = function () {
         this.model.setText(this.view.text);
         this.model.setWordsArray(this.view.text);
         this.model.setDelay(this.view.getDelay());
-        if (this.isWords === false) {
-            setInterval(function () { return _this.view.displayText(_this.model.typeWrite()); }, this.model.delayTime);
-        }
-        else {
-            setInterval(function () { return _this.view.displayText(_this.model.typeWords()); }, this.model.delayTime);
-        }
     };
     return Controller;
 }());
@@ -48,18 +85,17 @@ exports.Model = void 0;
 var Model = /** @class */ (function () {
     function Model() {
         this.delayTime = this.setDelay();
-        this.elementText = '';
-        this.text = '';
+        this.elementText = "";
+        this.text = "";
         this.wordsArray = [];
         this.words = [];
         this.index = 0;
     }
     Model.prototype.setText = function (text) {
         this.elementText = text;
-        return text;
     };
     Model.prototype.setWordsArray = function (text) {
-        this.wordsArray = text.split(' ');
+        this.wordsArray = text.split(" ");
     };
     Model.prototype.setDelay = function (delay) {
         if (delay === void 0) { delay = 500; }
@@ -67,52 +103,56 @@ var Model = /** @class */ (function () {
         return 60000 / delay;
     };
     Model.prototype.typeWrite = function () {
-        var _this = this;
-        if (this.index < this.elementText.length) {
-            this.text = this.elementText.slice(0, ++this.index);
-            setTimeout(function () { return _this.typeWrite(); }, this.delayTime);
-        }
-        else {
-            this.deleteTyping();
-        }
-        return this.text;
+        this.text = this.elementText.slice(0, ++this.index);
     };
     Model.prototype.deleteTyping = function () {
-        var _this = this;
-        if (this.index > 0) {
-            this.text = this.elementText.slice(0, --this.index);
-            setTimeout(function () { return _this.deleteTyping(); }, this.delayTime);
-        }
-        else {
-            this.typeWrite();
-        }
-        return this.text;
+        this.text = this.elementText.slice(0, --this.index);
     };
     Model.prototype.typeWords = function () {
-        var _this = this;
-        if (this.index < this.wordsArray.length) {
-            this.words = this.wordsArray.slice(0, ++this.index);
-            setTimeout(function () { return _this.typeWords(); }, this.delayTime);
-        }
-        else {
-            this.deleteWords();
-        }
-        return this.words.join(' ');
+        this.words = this.wordsArray.slice(0, ++this.index);
     };
     Model.prototype.deleteWords = function () {
-        var _this = this;
-        if (this.index > 0) {
-            this.words = this.wordsArray.slice(0, --this.index);
-            setTimeout(function () { return _this.deleteWords(); }, this.delayTime);
-        }
-        else {
-            this.typeWords();
-        }
-        return this.words.join(' ');
+        this.words = this.wordsArray.slice(0, --this.index);
     };
     return Model;
 }());
 exports.Model = Model;
+
+
+/***/ }),
+
+/***/ "./src/TypingEffect.ts":
+/*!*****************************!*\
+  !*** ./src/TypingEffect.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TypingEffect = void 0;
+var Controller_1 = __webpack_require__(/*! ./Controller */ "./src/Controller.ts");
+var Model_1 = __webpack_require__(/*! ./Model */ "./src/Model.ts");
+var View_1 = __webpack_require__(/*! ./View */ "./src/View.ts");
+var TypingEffect = /** @class */ (function () {
+    function TypingEffect(elementHTML, isWords) {
+        if (isWords === void 0) { isWords = false; }
+        this.isWords = isWords;
+        this.view = new View_1.View();
+        this.model = new Model_1.Model();
+        this.view.getText(elementHTML);
+        this.controller = new Controller_1.Controller(this.model, this.view);
+    }
+    TypingEffect.prototype.startType = function () {
+        if (this.isWords === false) {
+            this.controller.typeForward();
+        }
+        else {
+            this.controller.typeWordsForward();
+        }
+    };
+    return TypingEffect;
+}());
+exports.TypingEffect = TypingEffect;
 
 
 /***/ }),
@@ -129,7 +169,7 @@ exports.View = void 0;
 var View = /** @class */ (function () {
     function View() {
         this.elementHTML = null;
-        this.text = '';
+        this.text = "";
     }
     View.prototype._clearHtmlElement = function (elementHTML) {
         elementHTML.textContent = null;
@@ -150,7 +190,7 @@ var View = /** @class */ (function () {
     };
     View.prototype.displayText = function (text) {
         if (this.elementHTML)
-            this.elementHTML.classList.add('type');
+            this.elementHTML.classList.add("type");
         if (this.elementHTML)
             this.elementHTML.innerHTML = "<span class='text'>" + text + "</span>";
     };
@@ -169,14 +209,10 @@ exports.View = View;
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var Controller_1 = __webpack_require__(/*! ./Controller */ "./src/Controller.ts");
-var Model_1 = __webpack_require__(/*! ./Model */ "./src/Model.ts");
-var View_1 = __webpack_require__(/*! ./View */ "./src/View.ts");
-var typeWriter = document.getElementById('typeWriter');
-var view = new View_1.View();
-view.getText(typeWriter);
-var app = new Controller_1.Controller(new Model_1.Model(), view);
-app.type();
+var TypingEffect_1 = __webpack_require__(/*! ./TypingEffect */ "./src/TypingEffect.ts");
+var typeWriter = document.getElementById("typeWriter");
+var typingEffect = new TypingEffect_1.TypingEffect(typeWriter, false);
+typingEffect.startType();
 
 
 /***/ })

@@ -1,13 +1,6 @@
-import { Controller } from './Controller';
-import { Model } from './Model';
-import { View } from './View';
+import { TypingEffect } from "./TypingEffect";
 
+const typeWriter = document.getElementById("typeWriter") as HTMLElement;
 
-
-const typeWriter = document.getElementById('typeWriter') as HTMLElement;
-
-const view = new View();
-view.getText(typeWriter);
-
-const app = new Controller(new Model(), view);
-app.type();
+const typingEffect = new TypingEffect(typeWriter, false);
+typingEffect.startType();
