@@ -1,37 +1,25 @@
 <html>
   <head>
-    <title>Week With Moment</title>
+    <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href=./style.css />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
   </head>
 
   <body>
     <div class="container">
-      <div class="calendar">
-        <div class="month">
-          <i class="fas fa-angle-left prev-month"></i>
-          <div class="date">
-            <h1></h1>
-            <p></p>
-          </div>
-          <i class="fas fa-angle-right next-month"></i>
-        </div>
-        <div id="timer" class="timer"></div>
-        <div class="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-        <div class="days-container">
-          <i class="fas fa-angle-left prev-week"></i>
-          <div class="days"></div>
-          <i class="fas fa-angle-right next-week"></i>
-        </div>
+      <div class="weekdays" id="weekDays"></div>
+
+
+      <div class="week">
+        <div class="days" id="app"></div>
+      </div>
+      <div class="icons">
+        <i class="fas fa-angle-left prev" id="prev"></i>
+        <i class="fas fa-angle-right next" id="next"></i>
       </div>
     </div>
 
