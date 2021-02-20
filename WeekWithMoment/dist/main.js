@@ -1,9 +1,16 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var timer_1 = __webpack_require__(/*! ./timer */ "./src/timer.ts");
 var calendar = document.getElementById("app");
 var actualDate = new Date();
 var renderCalendar = function () {
@@ -61,6 +68,10 @@ var weekDays = document.getElementById("weekDays");
 for (var i = 0; i <= 6; i++) {
     weekDays.innerHTML += "<div>" + weekdayNamesArray[i] + "</div>";
 }
+var topDate = document.getElementById('actual-date');
+topDate.innerHTML = new Date().toLocaleString('PL', { year: 'numeric', month: 'long', day: 'numeric' });
+var timex = document.getElementById('timer');
+timer_1.timer(timex);
 renderCalendar();
 var prev = document.getElementById("prev");
 var next = document.getElementById("next");
@@ -73,5 +84,65 @@ next.addEventListener("click", function () {
     renderCalendar();
 });
 
+
+/***/ }),
+
+/***/ "./src/timer.ts":
+/*!**********************!*\
+  !*** ./src/timer.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.timer = void 0;
+var timer = function (element) {
+    var time = function () {
+        var hours = new Date().getHours();
+        var minutes = new Date().getMinutes();
+        var seconds = new Date().getSeconds();
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        element.innerHTML = hours + ":" + minutes + ":" + seconds;
+        setTimeout(time, 1000);
+    };
+    time();
+};
+exports.timer = timer;
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	// startup
+/******/ 	// Load entry module
+/******/ 	__webpack_require__("./src/index.ts");
+/******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;

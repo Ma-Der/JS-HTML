@@ -1,3 +1,5 @@
+import {timer} from './timer';
+
 const calendar = document.getElementById("app") as HTMLDivElement;
 
 const actualDate = new Date();
@@ -69,6 +71,12 @@ const weekDays = document.getElementById("weekDays") as HTMLDivElement;
 for (let i = 0; i <= 6; i++) {
   weekDays.innerHTML += `<div>${weekdayNamesArray[i]}</div>`;
 }
+
+const topDate = document.getElementById('actual-date') as HTMLDivElement;
+topDate.innerHTML = new Date().toLocaleString('PL', {year: 'numeric', month: 'long', day: 'numeric'});
+
+const timex = document.getElementById('timer') as HTMLElement;
+timer(timex);
 
 renderCalendar();
 
